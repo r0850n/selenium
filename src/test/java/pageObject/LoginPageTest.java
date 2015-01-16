@@ -24,8 +24,8 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
 public class LoginPageTest {
-	private static final String MY_PASSWORD = "qwert6";
-	private static final String MY_eMAIL_lOGIN = "robert.goldyn@o2.pl";
+	private static final String MY_PASSWORD = "aaa";
+	private static final String MY_eMAIL_lOGIN = "aaa@o2.pl";
 	private boolean acceptNextAlert = true;
 	private StringBuffer verificationErrors = new StringBuffer();
 
