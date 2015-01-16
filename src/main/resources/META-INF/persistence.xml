@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+	version="2.0">
+
+	<persistence-unit name="robert.Vaadinjpa">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<class>model.Message</class>
+		<class>model.Type</class>
+		<exclude-unlisted-classes>false</exclude-unlisted-classes>
+		<properties>
+
+			<!-- <property name="eclipselink.jdbc.password" value="aaa" />
+			<property name="eclipselink.jdbc.user" value="robert" />
+			<property name="eclipselink.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="eclipselink.jdbc.url" value="jdbc:mysql://localhost:3306/baza" />
+			<property name="eclipselink.ddl-generation" value="drop-and-create-tables" />
+			<property name="eclipselink.logging.level" value="INFO" /> -->
+			
+			<property name="eclipselink.target-database" value="MYSQL" />
+			<property name="eclipselink.ddl-generation" value="update" />
+<!-- 			<property name="eclipselink.logging.level" value="SEVERE" /> -->
+			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/baza" />
+			<property name="javax.persistence.jdbc.user" value="robert" />
+			<property name="javax.persistence.jdbc.password" value="aaa" />			
+			<property name="eclipselink.logging.level" value="FINE" />
+			<property name="eclipselink.id-validation" value="NONE"/>
+			 
+			 <!-- <property name="hibernate.archive.autodetection" value="class" />
+                <property name="hibernate.format_sql" value="false" />
+                <property name="hibernate.show_sql" value="false" />
+                <property name="hibernate.hbm2ddl.auto" value="create-update" />
+                <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
+                <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+                <property name="hibernate.connection.username" value="robert" />
+                <property name="hibernate.connection.password" value="aaa" />
+                <property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/baza" /> -->
+		</properties>
+	</persistence-unit>
+
+</persistence>
