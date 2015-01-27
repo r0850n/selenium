@@ -18,7 +18,8 @@ public class GocietyLoginPage {
 	@FindBy(id = "loginButtonBtn")
 	private WebElement loginButton;
 	
-	@FindBy(className="alert alert-error")
+	//@FindBy(className="alert alert-error")
+	@FindBy(css="html body#body div#pageLogin.app-page.active-page div.contentWrapper div.content div.centerPart div.loginCenteredBox div.wrap div.formLoginWrap form#formLogin div.alert.alert-error")
 	//@FindBy(xpath="/html/body/div[7]/div[1]/div[2]/div[1]/div/div/div[4]/form/div[1]")
 	private WebElement errorLogin;
 

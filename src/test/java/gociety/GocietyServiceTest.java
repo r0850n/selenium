@@ -18,6 +18,12 @@ import pageObject.HomePage;
 
 public class GocietyServiceTest {
 
+	private static final String CAST_EVIWARE_AS_SIGNED_INTEGER = "CAST('eviware' AS SIGNED INTEGER)";
+
+
+	private static final String CLASIC = "' or 1=1--";
+	
+	
 	private StringBuffer verificationErrors = new StringBuffer();
 	private WebDriver driver;
 	private GocietyHomePage homePage;
@@ -41,8 +47,11 @@ public class GocietyServiceTest {
 	}
 
 	@Test
-	public void startHomePageTest() {
+	public void startHomePageTest() throws Exception {
 		goToHomePage();
+		
+		homePage= new GocietyHomePage(driver);
+		System.out.println(homePage.getButtonBecomeAMember().getText());
 		assertTrue(driver.getTitle().equals("Gociety"));
 	}
 	
@@ -62,7 +71,37 @@ public class GocietyServiceTest {
 		System.out.println(loginPage.getErrorLogin().getText()); 
 		assertTrue(loginPage.getErrorLogin().isDisplayed());
 	}
-	public GocietyHomePage goToHomePage() {
+	
+	
+	@Test
+	public void testGetAll() throws Exception {
+		goToHomePage();
+		homePage= new GocietyHomePage(driver);
+		
+		System.out.println(homePage.getAllElementsString());
+	}
+	
+	
+	@Test
+	public void testSqlInjection_Clasic() throws Exception {
+		login(CLASIC,CLASIC);
+	
+	}
+	@Test
+	public void testSqlInjection_Type_Conversion() throws Exception {
+      login(CAST_EVIWARE_AS_SIGNED_INTEGER,"yesitdoes!");
+	
+      assertTrue(loginPage.getErrorLogin().isDisplayed());
+	}
+	
+	@Test
+	public void testSqlInjection_LogInAndLogIn() throws Exception {
+      for(int i=0;i<=2;i++){
+    	  testSqlInjection_Clasic();
+      }
+	
+	}
+	private GocietyHomePage goToHomePage() {
 
 		driver.get(GocietyHomePage.getHomePage());
 
@@ -70,9 +109,15 @@ public class GocietyServiceTest {
 
 	}
 	
-	public GocietyLoginPage goToLoginPage(){
+	private GocietyLoginPage goToLoginPage(){
 		
 		driver.get(GocietyLoginPage.getLoginPage());
 		return loginPage;
+	}
+	
+	private void login(String username, String password ){
+		goToLoginPage();
+		loginPage= new GocietyLoginPage(driver);
+		loginPage.loginAs(username, password);
 	}
 }

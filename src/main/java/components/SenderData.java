@@ -142,7 +142,17 @@ Property.ValueChangeListener, Handler, ClickListener {
 		return query.getResultList();
 	}
 
+	public Person getUser(String user,String password){
+		Query query = getEm()
+				.createQuery("SELECT p FROM Person p WHERE p.user=:user and p.password=:password");
+		
+		/*Query query = getEm()
+				.createQuery("SELECT p.id FROM Person p WHERE p.user=:user and p.password=:password");*/
+		query.setParameter("user", user);
+		query.setParameter("password", password);
 	
+		return (Person) query.getSingleResult();
+	}
 		
 		
 		public Message findMessageById(int id) {

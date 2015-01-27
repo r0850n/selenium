@@ -29,6 +29,7 @@ List<String>results = Lists.transform(elemenst, new ExtractText());
 	
 }
 
+
 private final class ExtractText implements Function<WebElement, String>{
 
 	@Override
