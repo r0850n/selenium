@@ -14,7 +14,7 @@ import com.google.common.collect.Lists;
 public class GocietyHomePage {
 	private static final String HOME_PAGE = "http://www.gociety.com";
 	
-	
+	//first change
 @FindBy(xpath="//html/body")
 private List<WebElement> all;
 
